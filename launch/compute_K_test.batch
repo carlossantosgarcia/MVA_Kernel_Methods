@@ -1,0 +1,10 @@
+#!/bin/bash 
+
+#SBATCH --job-name=k_test
+#SBATCH --nodes=1
+#SBATCH --partition=gpu_prod_long
+#SBATCH --time=6:00:00
+#SBATCH --output=logslurms/slurm-%j.out
+#SBATCH --error=logslurms/slurm-%j.err
+
+python3 methods/compute_test_kernel.py

@@ -1,0 +1,10 @@
+#!/bin/bash 
+
+#SBATCH --job-name=cv_weights
+#SBATCH --nodes=1
+#SBATCH --partition=gpu_prod_long
+#SBATCH --time=10:00:00
+#SBATCH --output=logslurms/crossvalidation_slurm-%j.out
+#SBATCH --error=logslurms/crossvalidation_slurm-%j.err
+
+python3 methods/cross_validation.py --kernel_path precomputed_kernels/rbf_norm_sigma=10_train.pkl --n_splits 5 --c_values 1 10 50 100 500 1000 5000 10000 50000 100000 500000 1000000 5000000 --class_weights

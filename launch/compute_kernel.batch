@@ -1,0 +1,10 @@
+#!/bin/bash 
+
+#SBATCH --job-name=compute_k
+#SBATCH --nodes=1
+#SBATCH --partition=gpu_prod_long
+#SBATCH --time=24:00:00
+#SBATCH --output=logslurms/slurm-%j.out
+#SBATCH --error=logslurms/slurm-%j.err
+
+python3 methods/compute_kernel.py --kernel rbf --compute_test --normalize

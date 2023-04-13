@@ -1,0 +1,10 @@
+#!/bin/bash 
+
+#SBATCH --job-name=rbf_50k
+#SBATCH --nodes=1
+#SBATCH --partition=gpu_prod_long
+#SBATCH --time=6:00:00
+#SBATCH --output=logslurms/crossvalidation_slurm-%j.out
+#SBATCH --error=logslurms/crossvalidation_slurm-%j.err
+
+python3 methods/generate_submission.py --K_train_path precomputed_kernels/LSP_norm_train.pkl --K_test_path precomputed_kernels/LSP_norm_test.pkl --n_splits 5 --C 10 --class_weights
